@@ -1,75 +1,59 @@
-# SERVER BACK-END CỦA HỆ THỐNG CHO VAY NGANG HÀNG
+# SMART CONTRACT STRUCTURE FOR P2P-LENDING NETWORK
 
-Hệ thống back-end của nền tảng cho vay ngang hàng hỗ xử lý yêu cầu dữ liệu (API) từ client
+Smart Contract stores information about contracts arising during the loan process, stored on the blockchain under the consensus of ledgers in the network.
 
-## Giới thiệu chung
+## General introduction
 
-### Nhóm Tác giả
+### Group of authors
 
-1453044 - Nguyễn Hoàng Thiên
-1453045 - Nguyễn Châu Thành Thiện
+1453044 - Nguyen Hoang Thien
+1453045 - Nguyen Chau Thanh Thien
 
-### Người hướng dẫn
+### Instructor
 
-Tiến sĩ Đinh Bá Tiến - Trưởng khoa CNTT, ĐH KHTN
-Nguyễn Thanh Sơn - Trưởng phòng PayooX, VietUnion
+Dr. Dinh Ba Tien - Head of IT Department, University of Natural Sciences
+Nguyen Thanh Son - Head of PayooX, VietUnion
 
-## Giới thiệu hệ thống
+## System introduction
 
-### Thư viện sử dụng
+### Tools used
 
-* [Node.js](https://nodejs.org/en/) - Nền tảng xây dựng back-end
-* [Express.js](https://expressjs.com/) - Thư viện hỗ trợ xây dựng các API của server
-* [Mongoose](http://mongoosejs.com/) - Thư viện hỗ trợ tổ chức các Schema, Model trên CSDL MongoDB
-* [Twillio](https://www.twilio.com/) - Thư viện hỗ trợ xác thực số điện thoại người dùng
-* [Hyperledger Composer Node.js SDK](https://github.com/hyperledger/composer) - Thư viện hỗ trợ tương tác với hệ thống Hyperledger Fabric
-* [JSONWebToken](https://github.com/auth0/node-jsonwebtoken) - Thư viện hỗ trợ tạo token bảo mật giữa client và server
+* [Visual Studio Code](https://code.visualstudio.com/) - IDE that supports programming
+* [Hyperledger Composer Add-on](https://github.com/hyperledger/composer-vscode-plugin) - plugin on VSC that supports model structure, logic, permissions for the Fabric system
+* [Hyperledger Composer Playground](http://composer-playground.mybluemix.net/) - supports testing the structure of programmed smart contracts
+* [Hyperledger Composer CLI](https://github.com/hyperledger/composer) - supports installing, testing, deploying, and monitoring blockchain systems using the command line
+* [Hyperledger Composer Node.js SDK](https://github.com/hyperledger/composer) - Library to support building with Hyperledger Fabric system with Composer
 
-### Các API cơ bản
+### Structure of basic Contracts
 
-* POST auth/signin - Đăng nhập vào hệ thống
-* GET loan/current - Xem khoản vay hiện tại
-* POST loan/create - Tạo khoản vay
-* POST invest/create - Cam kết đầu tư khoản vay
-* POST settle/loan  - Trả kỳ hạn khoản vay
-* .....
+* LoanContract - Stores loan and related borrower information
+* InvestingContract - Stores loan investment commitment information and related investors
+* SettlementContract - Stores a payment term of the loan, made by the borrower
+* InvestingFeeContract - Stores information about the platform's service fees corresponding to a payment term of a set of investment commitments.
 
-## Triển khai
+## Network deployment
 
-### Yêu cầu
+### Request
 
-* Cài đặt Node.js phiên bản 8.10.0 trở lên
-* Cài đặt npm phiên bản 5.x trở lên
-* Cài đặt MongoDB phiên bản 4.0 trở lên
-* Cài đặt Heroku phiên bản 7.0.26 trở lên
-* Cài đặt git 2.9.x trở lên
-
-### Hướng dẫn chạy trên nền localhost
-
-1. Chạy server MongoDB ở cổng 27017
-2. Ở thư mục gốc, chạy lệnh npm install
-3. Chạy lệnh npm start
-4. Server start ở cổng 8080
-5. Thực hiện các API tương ứng
-
-### Hướng dẫn chạy trên môi trường heroku
-
-1. Đăng nhập vào heroku - heroku login
-2. Chạy lệnh heroku create
-3. Cài đặt addon heroku MongoDB mLab trên web heroku
-4. Cài đặt biến môi trường trong file config/data.json trên web heroku
-4. Chạy lệnh git add . 
-5. Chạy lệnh git commit -am "Deploy server p2p"
-6. Chạy lệnh git push heroku master
-7. Heroku thông báo trạng thái triển khai
-(API Endpoint nhóm đã triển khai: https://p2p-lending-14clc.herokuapp.com/)
-
-## Bản quyền
-
-Hệ thống này thuộc sở hữu của nhóm tác giả, được bảo hộ bởi quyền sản phẩm trí tuệ theo quy định của Đại học Khoa Học Tự Nhiên và công ty Cổ phần Dịch vụ trực tuyến (VietUnion)
+* Install Node.js version 8.10.0 or higher
+* Install npm version 5.x or higher
+* Install [Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.0/getting_started.html)
+* Install [Hyperledger Composer](https://hyperledger.github.io/composer/latest/installing/development-tools.html)
 
 
+### Instructions for deploying network at localhost
 
+* Follow the instructions of [Hyperledger Composer](https://hyperledger.github.io/composer/latest/tutorials/deploy-to-fabric-single-org)
 
+### Instructions for deploying a network at IBM Kubernetes IBM Service
 
+1. Follow the instructions [IBM Container Service](ibm-container-service.md)
+2. Open the link https://your-kubernetes-public-ip:31080 or http://173.193.120.168:31080 (prepared by the team)
+3. Create a new business network archive with user = admin and password = password (Deploy new business network button)
+4. Open the newly created BNA.
+5. Upload the files model.cto, permission.acl, logic.js and execute the update command
+(Note: If you use the IP created by the group, please do not change existing BNAs because it affects the current system. If you cannot access the IP, contact the group to re-issue a new IP due to Kuberbetes policy. will change cluster once a month)
 
+## License
+
+This system is owned by the author group, protected by intellectual property rights according to the regulations of the University of Natural Sciences and Online Services Joint Stock Company (VietUnion).
