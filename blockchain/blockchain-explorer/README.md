@@ -1,67 +1,67 @@
-# ỨNG DỤNG WEB THEO DÕI HỆ THỐNG HYPERLEDGER FABRIC
+# HYPERLEDGER FABRIC SYSTEM MONITORING WEB APPLICATION
 
-Ứng dụng web explorer này nhằm giúp giám sát các transaction, block xảy ra trên mạng lưới Hyperledger Fabric đã triển khai.
-Ứng dụng web explorer này được fork từ [Hyperledger Explorer](https://github.com/hyperledger/blockchain-explorer/tree/release-3.2) và được điều chỉnh cho phù hợp với quy trình nghiệp vụ của hệ thống.
+This web explorer application is intended to help monitor transactions and blocks occurring on the deployed Hyperledger Fabric network.
+This web explorer application is forked from [Hyperledger Explorer](https://github.com/hyperledger/blockchain-explorer/tree/release-3.2) and adjusted to suit the system's business processes.
 
-## Giới thiệu chung
+## General introduction
 
-### Nhóm Tác giả
+### Group of authors
 
-1453044 - Nguyễn Hoàng Thiên
-1453045 - Nguyễn Châu Thành Thiện
+1453044 - Nguyen Hoang Thien
+1453045 - Nguyen Chau Thanh Thien
 
-### Người hướng dẫn
+### Instructor
 
-Tiến sĩ Đinh Bá Tiến - Trưởng khoa CNTT, ĐH KHTN
-Nguyễn Thanh Sơn - Trưởng phòng PayooX, VietUnion
+Dr. Dinh Ba Tien - Head of IT Department, University of Natural Sciences
+Nguyen Thanh Son - Head of PayooX, VietUnion
 
-## Giới thiệu hệ thống
+## System introduction
 
-### Thư viện sử dụng
+### Library used
 
-* [Node.js](https://nodejs.org/en/) - Nền tảng xây dựng back-end
-* [Express.js](https://expressjs.com/) - Thư viện hỗ trợ xây dựng các API của server
-* [PostgreSQL](https://www.postgresql.org/) - CSDL quan hệ PostgreSQL
-* [ReactJS](https://reactjs.org/) - Nền tảng xây dựng giao diện web
+* [Node.js](https://nodejs.org/en/) - Back-end building platform
+* [Express.js](https://expressjs.com/) - Library to support building server APIs
+* [PostgreSQL](https://www.postgresql.org/) - PostgreSQL relational database
+* [ReactJS](https://reactjs.org/) - Platform for building web interfaces
 
-### Các chức năng cơ bản
+### Basic functions
 
-* Dashboard - Xem thông tin tổng quan của mạng lưới hiện tại (Số block, transaction, node, chaincode, timeline)
-* Block - Xem thông tin tổng quan của một block dữ liệu
-* Transaction - Xem thông tin chi tiết của một transaction
-* Góc nhìn người dùng (mở bằng ứng dụng di động) - Xem thông tin chi tiết transaction mà người dùng đó tạo ra
+* Dashboard - View overview information of the current network (Block number, transactions, nodes, chaincode, timeline)
+* Block - View overview information of a data block
+* Transaction - View detailed information of a transaction
+* User view (open with mobile app) - View transaction details that that user created
 
-## Triển khai
+## Deployment
 
-### Yêu cầu
+### Request
 
-* Cài đặt Node.js phiên bản 8.10.0 trở lên
-* Cài đặt npm phiên bản 5.x trở lên
-* Cài đặt PosrgreSQL phiên bản 10
-* Cài đặt Heroku phiên bản 7.0.26 trở lên
-* Cài đặt git 2.9.x trở lên
+* Install Node.js version 8.10.0 or higher
+* Install npm version 5.x or higher
+* Install PosrgreSQL version 10
+* Install Heroku version 7.0.26 or later
+* Install git 2.9.x or higher
 
-### Hướng dẫn chạy trên nền localhost
+### Instructions run on localhost platform
 
-1. Chạy server PostgreSQL ở cổng 5432
-2. Điều chỉnh file appconfig.json phù hợp với mạng lưới blockchain triển khai, nếu sử dụng lại hệ thống do nhóm triển khai thì bỏ qua bước này
-3. Ở thư mục app/db, chạy command psql và thực hiện 2 file explorerpg.sql và update.sql để tạo các bảng lưu trữ dữ liệu
-4. Ở thư mục client, chạy lệnh npm run build
-5. Ở thư mục gốc, chạy lệnh npm install
-6. Truy cập đường dẫn https://localhost:8080
+1. Run the PostgreSQL server on port 5432
+2. Adjust the appconfig.json file to suit the deployed blockchain network. If you reuse the system deployed by the team, skip this step
+3. In the app/db directory, run the psql command and execute two files explorerpg.sql and update.sql to create data storage tables
+4. In the client directory, run the npm run build command
+5. In the root directory, run npm install command
+6. Access the link https://localhost:8080
 
-### Hướng dẫn chạy trên môi trường heroku
+### Instructions to run on heroku environment
 
-1. Đăng nhập vào heroku - heroku login
-2. Chạy lệnh heroku create
-3. Cài đặt addon heroku Postgres trên web heroku
-4. Chạy command psql và thực hiện 2 file explorerpg.sql và update.sql cho addon database vừa tạo
-4. Chạy lệnh git add . 
-5. Chạy lệnh git commit -am "Deploy Hyperledger Explorer"
-6. Chạy lệnh git push heroku master
-7. Heroku thông báo trạng thái triển khai
-(API Endpoint nhóm đã triển khai: https://aqueous-hollows-61580.herokuapp.com/)
+1. Login to heroku - heroku login
+2. Run the heroku create command
+3. Install Postgres heroku addon on heroku web
+4. Run command psql and execute 2 files explorerpg.sql and update.sql for the newly created database addon
+4. Run the command git add .
+5. Run the command git commit -am "Deploy Hyperledger Explorer"
+6. Run the command git push heroku master
+7. Heroku announces deployment status
+(Implemented group Endpoint API: https://aqueous-hollows-61580.herokuapp.com/)
 
-## Bản quyền
+## License
 
-Hệ thống này thuộc sở hữu của nhóm tác giả, được bảo hộ bởi quyền sản phẩm trí tuệ theo quy định của Đại học Khoa Học Tự Nhiên và công ty Cổ phần Dịch vụ trực tuyến (VietUnion)
+This system is owned by the author group, protected by intellectual property rights according to the regulations of the University of Natural Sciences and Online Services Joint Stock Company (VietUnion).

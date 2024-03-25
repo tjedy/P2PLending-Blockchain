@@ -1,70 +1,64 @@
-# CLIENT FRONT-END CỦA HỆ THỐNG CHO VAY NGANG HÀNG
+# CLIENT FRONT-END OF THE PEER-PEER LENDING SYSTEM
 
-Hệ thống front-end của nền tảng cho vay ngang hàng là ứng dụng di động hỗ trợ cả 2 hệ điều hành Android và iOS, được xây dựng trên nền tảng React Native
+The front-end system of the peer-to-peer lending platform is a mobile application that supports both Android and iOS operating systems, built on the React Native platform.
 
-## Giới thiệu chung
+## General introduction
 
-### Nhóm Tác giả
+### Group of authors
 
-1453044 - Nguyễn Hoàng Thiên
-1453045 - Nguyễn Châu Thành Thiện
+1453044 - Nguyen Hoang Thien
+1453045 - Nguyen Chau Thanh Thien
 
-### Người hướng dẫn
+### Instructor
 
-Tiến sĩ Đinh Bá Tiến - Trưởng khoa CNTT, ĐH KHTN
-Nguyễn Thanh Sơn - Trưởng phòng PayooX, VietUnion
+Dr. Dinh Ba Tien - Head of IT Department, University of Natural Sciences
+Nguyen Thanh Son - Head of PayooX, VietUnion
 
-## Giới thiệu hệ thống
+## System introduction
 
-### Thư viện sử dụng
+### Library used
 
-* [React Native](https://facebook.github.io/react-native/) - Nền tảng xây dựng front-end app
-* [Moment.js](https://momentjs.com/) - Thư viện hỗ trợ format ngày tháng năm trong javascript
-* [React Native Bcrypt](https://www.npmjs.com/package/react-native-bcrypt) - Thư viện hỗ trợ mã hóa mật khẩu của người dùng
-* [React Navigation](https://reactnavigation.org/) - Thư viện hỗ trợ việc quản lý điều hướng các màn hình của ứng dụng di động React Native
-* Và các thư viện hỗ trợ xây dựng giao diện khác ...
+* [React Native](https://facebook.github.io/react-native/) - Front-end app building platform
+* [Moment.js](https://momentjs.com/) - Library supporting date, month, year format in javascript
+* [React Native Bcrypt](https://www.npmjs.com/package/react-native-bcrypt) - Library that supports encryption of user passwords
+* [React Navigation](https://reactnavigation.org/) - Library that supports navigation management of React Native mobile application screens
+* And other interface building support libraries...
 
-### Các chức năng cơ bản
+### Basic functions
 
-* Đăng nhập/Đăng ký/Đăng xuất
-* Xác nhận thông tin người dùng
-* Tạo khoản vay
-* Cam kết đầu tư khoản vay
-* Quản lý khoản vay
-* Quản lý khoản đầu tư
+* Login/Register/Logout
+* Confirm user information
+* Create loans
+* Commitment to invest in the loan
+* Loan management
+* Investment management
 * ...
 
-## Triển khai
+## Deployment
 
-### Yêu cầu
+### Request
 
-* Cài đặt Node.js phiên bản 8.10.0 trở lên
-* Cài đặt npm phiên bản 5.x trở lên
-* Cài đặt React Native phiên bản 0.55.3 trở lên
-* Cài đặt React phiên bản 16.3.0-alpha.2 trở lên
-* Cài đặt React Navigation phiên bản 1.5.8 trở lên
-* Cài đặt Moment.js phiên bản 2.21.0 trở lên
-* Cài đặt git 2.9.x trở lên
+* Install Node.js version 8.10.0 or higher
+* Install npm version 5.x or higher
+* Install React Native version 0.55.3 or higher
+* Install React version 16.3.0-alpha.2 or higher
+* Install React Navigation version 1.5.8 or higher
+* Install Moment.js version 2.21.0 or later
+* Install git 2.9.x or higher
 
-### Hướng dẫn chạy trên máy ảo (trên máy Mac OSX - thiết bị iOS)
+### Instructions for running on a virtual machine (on Mac OSX - iOS devices)
 
-1. Chạy lệnh npm install trên thư mục gốc client
-2. Chạy lệnh react-native run-ios nếu muốn chạy trên máy ảo iOS
-3. Thực hiện các chức năng tương ứng 
+1. Run the npm install command on the client root directory
+2. Run the react-native run-ios command if you want to run on the iOS virtual machine
+3. Perform corresponding functions
 
-### Hướng dẫn chạy trên thiết bị thật (máy Android)
+### Instructions to run on real device (Android device)
 
-1. Sao chép file P2PLending.apk trong thư mục APP vào thiết bị thật (Android).
-2. Tiến hành cài đặt file này và cung cấp các quyền liên quan.
-3. Mở app và thực hiện các chức năng.
-(Lưu ý: Ứng dụng chỉ hỗ trợ các thiết bị Android 4.1 phiên bản API 16 trở lên)
+1. Copy the P2PLending.apk file in the APP folder to the real device (Android).
+2. Install this file and provide related permissions.
+3. Open the app and perform the functions.
+(Note: The application only supports Android 4.1 devices API version 16 or higher)
 
-## Bản quyền
+## License
 
-Hệ thống này thuộc sở hữu của nhóm tác giả, được bảo hộ bởi quyền sản phẩm trí tuệ theo quy định của Đại học Khoa Học Tự Nhiên và công ty Cổ phần Dịch vụ trực tuyến (VietUnion)
-
-
-
-
-
-
+This system is owned by the author group, protected by intellectual property rights according to the regulations of the University of Natural Sciences and Online Services Joint Stock Company (VietUnion).

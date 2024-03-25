@@ -1,60 +1,67 @@
-# CẤU TRÚC SMART CONTRACT CHO MẠNG LƯỚI P2P-LENDING
+# HYPERLEDGER FABRIC SYSTEM MONITORING WEB APPLICATION
 
-Smart Contract lưu trữ thông tin về các hợp đồng phát sinh trong quá trình vay, được lưu trữ trên blockchain dưới sự đồng thuận của các ledger có trong mạng lưới
+This web explorer application is intended to help monitor transactions and blocks occurring on the deployed Hyperledger Fabric network.
+This web explorer application is forked from [Hyperledger Explorer](https://github.com/hyperledger/blockchain-explorer/tree/release-3.2) and adjusted to suit the system's business processes.
 
-## Giới thiệu chung
+## General introduction
 
-### Nhóm Tác giả
+### Group of authors
 
-1453044 - Nguyễn Hoàng Thiên
-1453045 - Nguyễn Châu Thành Thiện
+1453044 - Nguyen Hoang Thien
+1453045 - Nguyen Chau Thanh Thien
 
-### Người hướng dẫn
+### Instructor
 
-Tiến sĩ Đinh Bá Tiến - Trưởng khoa CNTT, ĐH KHTN
-Nguyễn Thanh Sơn - Trưởng phòng PayooX, VietUnion
+Dr. Dinh Ba Tien - Head of IT Department, University of Natural Sciences
+Nguyen Thanh Son - Head of PayooX, VietUnion
 
-## Giới thiệu hệ thống
+## System introduction
 
-### Công cụ sử dụng
+### Library used
 
-* [Visual Studio Code](https://code.visualstudio.com/) - trình IDE hỗ trợ lập trình
-* [Hyperledger Composer Add-on](https://github.com/hyperledger/composer-vscode-plugin) - plugin trên VSC hỗ trợ cấu trúc model, logic, permission cho hệ thống Fabric
-* [Hyperledger Composer Playground](http://composer-playground.mybluemix.net/) - hỗ trợ việc kiểm thử cấu trúc các smart contract được lập trình
-* [Hyperledger Composer CLI](https://github.com/hyperledger/composer) - hỗ trợ việc cài đặt, kiểm thử, triển khai, giám sát hệ thống blockchain bằng command line
-* [Hyperledger Composer Node.js SDK](https://github.com/hyperledger/composer) - Thư viện hỗ trợ xây dựng với hệ thống Hyperledger Fabric với Composer
+* [Node.js](https://nodejs.org/en/) - Back-end building platform
+* [Express.js](https://expressjs.com/) - Library to support building server APIs
+* [PostgreSQL](https://www.postgresql.org/) - PostgreSQL relational database
+* [ReactJS](https://reactjs.org/) - Platform for building web interfaces
 
-### Cấu trúc các Contract căn bản
+### Basic functions
 
-* LoanContract - Lưu trữ thông tin khoản vay, người đi vay liên quan
-* InvestingContract - Lưu trữ thông tin cam kết đầu tư khoản vay, nhà đầu tư liên quan
-* SettlementContract - Lưu trữ một kỳ hạn thanh toán của khoản vay, người đi vay thực hiện
-* InvestingFeeContract - Lưu trữ thông tin thu phí dịch vụ của nên tảng ứng với một kỳ hạn thanh toán của một tập cam kết đầu tư.
+* Dashboard - View overview information of the current network (Block number, transactions, nodes, chaincode, timeline)
+* Block - View overview information of a data block
+* Transaction - View detailed information of a transaction
+* User view (open with mobile app) - View transaction details that that user created
 
-## Triển khai mạng lưới
+## Deployment
 
-### Yêu cầu
+### Request
 
-* Cài đặt Node.js phiên bản 8.10.0 trở lên
-* Cài đặt npm phiên bản 5.x trở lên
-* Cài đặt [Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.0/getting_started.html) 
-* Cài đặt [Hyperledger Composer](https://hyperledger.github.io/composer/latest/installing/development-tools.html)
+* Install Node.js version 8.10.0 or higher
+* Install npm version 5.x or higher
+* Install PosrgreSQL version 10
+* Install Heroku version 7.0.26 or later
+* Install git 2.9.x or higher
 
+### Instructions run on localhost platform
 
-### Hướng dẫn triển khai mạng lưới ở localhost
+1. Run the PostgreSQL server on port 5432
+2. Adjust the appconfig.json file to suit the deployed blockchain network. If you reuse the system deployed by the team, skip this step
+3. In the app/db directory, run the psql command and execute two files explorerpg.sql and update.sql to create data storage tables
+4. In the client directory, run the npm run build command
+5. In the root directory, run npm install command
+6. Access the link https://localhost:8080
 
-* Làm theo hướng dẫn của [Hyperledger Composer](https://hyperledger.github.io/composer/latest/tutorials/deploy-to-fabric-single-org)
+### Instructions to run on heroku environment
 
-### Hướng dẫn triển khai mạng lưới ở IBM Kubernetes IBM Service
+1. Login to heroku - heroku login
+2. Run the heroku create command
+3. Install Postgres heroku addon on heroku web
+4. Run command psql and execute 2 files explorerpg.sql and update.sql for the newly created database addon
+4. Run the command git add .
+5. Run the command git commit -am "Deploy Hyperledger Explorer"
+6. Run the command git push heroku master
+7. Heroku announces deployment status
+(Implemented group Endpoint API: https://aqueous-hollows-61580.herokuapp.com/)
 
-1. Làm theo hướng dẫn [IBM Container Service](ibm-container-service.md)
-2. Mở đường link https://your-kubernetes-public-ip:31080 hoặc http://173.193.120.168:31080 (do nhóm thực hiện sẵn)
-3. Tạo mới một business netword archive với user = admin và password = password (nút Deploy new business network)
-4. Mở BNA vừa tạo.
-5. Upload các file model.cto, permission.acl, logic.js lên và thực hiện lệnh update
-(Lưu ý: Nếu sử dụng IP mà nhóm tạo, vui lòng không thay đổi các BNA hiện có vì ảnh hưởng đến hệ thống hiện tại. Nếu không truy cập được IP thì liên hệ nhóm để cấp lại IP mới do chính sách của Kuberbetes sẽ thay đổi cluster mỗi tháng một lần)
+## License
 
-## Bản quyền
-
-Hệ thống này thuộc sở hữu của nhóm tác giả, được bảo hộ bởi quyền sản phẩm trí tuệ theo quy định của Đại học Khoa Học Tự Nhiên và công ty Cổ phần Dịch vụ trực tuyến (VietUnion)
-
+This system is owned by the author group, protected by intellectual property rights according to the regulations of the University of Natural Sciences and Online Services Joint Stock Company (VietUnion).
